@@ -13,7 +13,7 @@ import android.view.View.OnClickListener;
 import android.widget.*;
 import android.location.LocationListener;
 
-public class JLSTutorialActivity extends MapActivity{
+public class JLSTutorialActivity extends MapActivity{//繼承mapActivity
     /** Called when the activity is first created. */
 	private static final long MINIMUM_DISTANCE_CHANGE_FOR_UPDATE = 1;	//meter
 	private static final long MINIMUM_TIME_BETWEEN_UPDATE = 1000; 	//milesecond
@@ -27,7 +27,7 @@ public class JLSTutorialActivity extends MapActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);	//設定layout
         
-        gpsButton = (Button) findViewById(R.id.retrieve_Location_Button);	//生成button&View
+        gpsButton = (Button) findViewById(R.id.retrieve_Location_Button);	//create button&View
         locator = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         mv = (MapView) findViewById(R.id.mapview);
         mc = mv.getController();
@@ -81,6 +81,10 @@ public class JLSTutorialActivity extends MapActivity{
     		mc.animateTo(cp);
     		mc.setZoom(16);
     		mv.invalidate();
+    	}
+    	else
+    	{
+    		Toast.makeText(getApplication(), "Currently cant get the Device's Location.",Toast.LENGTH_LONG).show();
     	}
     }
 
